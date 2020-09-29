@@ -1,0 +1,22 @@
+--- 0.0007030963897705078 seconds for opening file and counting words ---
+--- 0.00043892860412597656 seconds for sorting values ---
+de 86
+la 40
+police 29
+et 27
+à 25
+des 24
+les 23
+Article 19
+le 19
+↬ 19
+nationale 15
+en 13
+est 13
+DE 12
+TITRE 12
+ou 11
+qui 11
+: 9
+DES 9
+aux 9

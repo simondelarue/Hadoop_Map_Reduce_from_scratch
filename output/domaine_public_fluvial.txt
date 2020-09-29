@@ -1,0 +1,22 @@
+--- 0.011398077011108398 seconds for opening file and counting words ---
+--- 0.0017778873443603516 seconds for sorting values ---
+de 621
+le 373
+du 347
+la 330
+et 266
+à 209
+des 208
+les 200
+est 169
+dans 136
+par 122
+sur 119
+ou 118
+Article 103
+↬ 103
+au 97
+en 95
+bateau 74
+tribunal 72
+pour 69
