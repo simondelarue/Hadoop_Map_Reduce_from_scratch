@@ -13,7 +13,7 @@ def wc(filename):
 
 # Trier un dictionnaire par clés
 def print_words(dict):
-    words = sorted(dict.keys())
+    sorted_wc = sorted(dict.keys())
     return sorted_wc
 
 # Trier un dictionnaire par valeurs
