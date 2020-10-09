@@ -3,7 +3,7 @@ import time
 def calc():
     return 3 + 5
 
-time.sleep(10)
+time.sleep(5)
 
 print(calc())
 
