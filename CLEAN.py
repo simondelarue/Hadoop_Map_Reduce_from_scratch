@@ -2,10 +2,10 @@ from subprocess import PIPE, Popen, STDOUT, TimeoutExpired
 from threading import Timer
 from multiprocessing import Pool
 
-from ssh_connexions_utils import *
+from ssh_connexions_utils import rmdir_cmd, read_machines, getName
 
 
-def ssh(machine):
+def clean(machine):
     ''' 
     Objectif
         Teste une connexion ssh sur une machine passée en paramètre.
@@ -14,7 +14,7 @@ def ssh(machine):
     input
         machine : Nom de la machine distante'''
 
-    cmd = "ssh -o \'StrictHostKeyChecking=no\' " + machine + ' hostname'
+    cmd = "ssh -o \'StrictHostKeyChecking=no\' " + getName() + machine + ' hostname'
     timeout = 10
     # Processus de connexion ssh sur machine distante
     process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
@@ -22,7 +22,7 @@ def ssh(machine):
     try:
         # La sortie d'erreur est redirigée sur la sortie standard
         # Si la connexion réussi avant le timeout, on appelle la commande 'hostname' sur la machine distante
-        stdout, stderr = process.communicate(timeout=timeout)
+        _, stderr = process.communicate(timeout=timeout)
         if stderr == "":
 
             # Suppression du directory
@@ -48,7 +48,7 @@ def ssh_connect_and_rm(machine_list):
     
     # MultiProcessing
     with Pool() as p:
-        log = p.map(ssh, machine_list)
+        log = p.map(clean, machine_list)
 
     
     print('---------------------------------------------------')
@@ -60,5 +60,5 @@ def ssh_connect_and_rm(machine_list):
     
     return [machine.split(' ')[3] for machine in log if 'OK' in machine]
 
-machines = read_machines('machines.txt')
+machines = read_machines('/tmp/sdelarue/machines.txt')
 ssh_connect_and_rm(machines)

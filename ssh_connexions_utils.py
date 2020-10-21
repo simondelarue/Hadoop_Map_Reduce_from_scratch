@@ -1,13 +1,16 @@
 
 import os
 
+def getName():
+    return('sdelarue@')
+
 def mkdir_cmd(machine, directory):
     ''' input
             machine : Nom de la machine distante
             directory : Chemin complet du répertoire à créer 
         output
             String : Commande shell pour la création du répertoire '''
-    return ('ssh ' + machine + ' mkdir -p ' + directory)
+    return ('ssh ' + getName() + machine + ' mkdir -p ' + directory)
 
 
 def rmdir_cmd(machine, directory):
@@ -16,7 +19,7 @@ def rmdir_cmd(machine, directory):
             directory : Chemin complet du répertoire à supprimer
         output
             String : Commande shell pour la suppression du répertoire '''
-    return ('ssh ' + machine + ' rm -rf ' + directory)
+    return ('ssh ' + getName() + machine + ' rm -rf ' + directory)
 
 
 def sshcopy_file_cmd(machine, filename, from_directory, to_directory):
@@ -27,7 +30,7 @@ def sshcopy_file_cmd(machine, filename, from_directory, to_directory):
             to_directory : Chemin complet du répertoire dans lequel copier le fichier 'filename'
         output
             String : Commande shell pour la copie d'un fichier sur machine distante via ssh '''
-    return ('scp ' + from_directory + '/' + filename + ' ' + machine + ':' + to_directory + '/' + filename)
+    return ('scp ' + from_directory + '/' + filename + ' ' + getName() + machine + ':' + to_directory + '/' + filename)
 
 
 def splits_files(direct):
@@ -52,3 +55,4 @@ def map_files_machines(file_list, machine_list):
 def print_data_repartition(dict_mapping):
     for split_name, machine in dict_mapping.items():
         print(split_name + ' -> ' + machine)
+

@@ -2,7 +2,7 @@ from subprocess import PIPE, Popen, STDOUT, TimeoutExpired
 from threading import Timer
 from multiprocessing import Pool
 
-from ssh_connexions_utils import *
+from ssh_connexions_utils import mkdir_cmd, sshcopy_file_cmd, splits_files, getName
 
 def ssh(machine):
     ''' 
@@ -13,7 +13,7 @@ def ssh(machine):
     input
         machine : Nom de la machine distante'''
 
-    cmd = "ssh -o \'StrictHostKeyChecking=no\' " + machine + ' hostname'
+    cmd = "ssh -o \'StrictHostKeyChecking=no\' " + getName() + machine + ' hostname'
     timeout = 10
     # Processus de connexion ssh sur machine distante
     process = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
@@ -21,7 +21,7 @@ def ssh(machine):
     try:
         # La sortie d'erreur est redirigée sur la sortie standard
         # Si la connexion réussi avant le timeout, on appelle la commande 'hostname' sur la machine distante
-        stdout, stderr = process.communicate(timeout=timeout)
+        _, stderr = process.communicate(timeout=timeout)
         
         if stderr == "":
             # Processus de création de répertoire sur la machine distante
@@ -31,7 +31,7 @@ def ssh(machine):
 
             # Processus de copie de fichier sur la machine distante
             file_to_copy = 'SLAVE.py'
-            sshcopy_file_process = Popen(sshcopy_file_cmd(machine, file_to_copy, direct, direct), shell=True, text=True)
+            sshcopy_file_process = Popen(sshcopy_file_cmd(machine, file_to_copy, direct, direct), stdout=PIPE, stderr=PIPE, shell=True, text=True)
             sshcopy_file_process.wait()
 
             process.kill()
@@ -53,7 +53,7 @@ def deploy(machine_list):
     
     print('===================================================')
     print('Deploiement du SLAVE.py sur les machines ...')
-    
+
     # MultiProcessing
     with Pool() as p:
         log = p.map(ssh, machine_list)
@@ -66,8 +66,14 @@ def deploy(machine_list):
     print(f"Connexions en échec : {len([elem for elem in log if 'Echec' in elem])}")
     print('===================================================')
     
+    available_machines = [machine.split(' ')[3] for machine in log if 'OK' in machine]
+
+    # Creation d'un fichier de machines disponibles
+    with open('/tmp/sdelarue/available_machines.txt', 'w') as f1:
+        for machine in available_machines:
+            f1.write(machine + '\n')
     
-    return [machine.split(' ')[3] for machine in log if 'OK' in machine]
+    return available_machines
 
 
 
