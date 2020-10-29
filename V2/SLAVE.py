@@ -6,6 +6,7 @@ import string
 import socket
 import os
 import hashlib
+import time
 
 # Dictionnaires de données pour les étapes de SHUFFLE et REDUCE
 SHUFFLE_DICT = {}
@@ -28,40 +29,42 @@ def get_machines(filename):
 
 def create_shuffle(receiver):
     ''' Ecrit un dictionnaire de données dans un fichier .txt '''
-
+    #start = time.time()
     with open(f'/tmp/sdelarue/shuffles/{receiver}_{socket.gethostname()}.txt', 'a') as f:
         for value in SHUFFLE_DICT.get(receiver):
             f.write(f'{value} 1\n')
         f.close()
-    print(f'SHUFFLE CREATED {receiver}')
+    #end = time.time()
+    #print(f'SHUFFLE CREATED {receiver} {end - start}')
 
 
 def send_shuffle(filename):
     ''' Envoie un fichier shuffle par scp au receiver '''
-
+    #start = time.time()
     cmd = f"scp /tmp/sdelarue/shuffles/{filename} sdelarue@{filename.split('_')[0]}:/tmp/sdelarue/shufflesreceived"
     process_shuffle = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
     process_shuffle.wait()
     process_shuffle.kill()
-    print(f'SHUFFLE SENT {filename}')
+    #end = time.time()
+    #print(f'SHUFFLE SENT {filename} {end - start}')
 
 
 def create_reduce(word):
     ''' Ecrit un dictionnaire de données dans un fichier .txt '''
-    with open(f'/tmp/sdelarue/reduces/reduce.txt', 'a') as f_reduce:
+
+    print(f"{word} {WC_DICT.get(word)}")
+    '''with open(f'/tmp/sdelarue/reduces/reduce.txt', 'a') as f_reduce:
         f_reduce.write(f"{word} {WC_DICT.get(word)}\n")
         # Affichage du résultat dans la sortie standard, pour récupération par le MASTER
         print(f"{word} {WC_DICT.get(word)}")
-    f_reduce.close()
-
-    
-
+    f_reduce.close()'''
 
 
 def shuffle(filename, machines):
     ''' Gestion des transferts de données entre machines du réseau '''
 
     # Lit les fichiers UM.txt et stocke les données dans un dictionnaire
+    #start = time.time()
     with open(filename, encoding='utf8') as f1:
         for line in f1.readlines():
             word = line.split()[0]
@@ -69,11 +72,18 @@ def shuffle(filename, machines):
             # Application de la fonction de hashage à chaque mot
             hash_value = hash_function(word)
             receiver = machines[hash_value % len(machines)]
-            SHUFFLE_DICT[receiver] = SHUFFLE_DICT.get(receiver, []) + [word]
-    
+            #SHUFFLE_DICT[receiver] = SHUFFLE_DICT.get(receiver, []) + [word]
+
+            with open(f'/tmp/sdelarue/shuffles/{receiver}_{socket.gethostname()}.txt', 'a') as f:
+                f.write(f'{word} 1\n')
+            f.close()
+
+    #end = time.time()
+    #print(f'Dictionnaire créé pour le shuffle {end - start}')
+
     # Ecrit les données du dictionnaire dans plusieurs fichiers .txt
-    with Pool() as p:
-        p.map(create_shuffle, list(SHUFFLE_DICT.keys()))
+    '''with Pool() as p:
+        p.map(create_shuffle, list(SHUFFLE_DICT.keys()))'''
     # Envoie les données aux autres workers du réseau
     with Pool() as p:
         p.map(send_shuffle, os.listdir('/tmp/sdelarue/shuffles'))
@@ -105,9 +115,10 @@ def reducer():
                     WC_DICT[word] = WC_DICT.get(word, 0) + 1
 
         # Ecrit l'agrégation des résultats dans un fichier reduce
-        with Pool() as p:
-            p.map(create_reduce, list(WC_DICT.keys()))
-
+        '''with Pool() as p:
+            p.map(create_reduce, list(WC_DICT.keys()))'''
+        for key, value in WC_DICT.items():
+            print(f'{key} {value}')
 
 def main():
 

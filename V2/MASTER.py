@@ -107,9 +107,8 @@ def deploy_data_splits(machine, filename):
     process_splits.wait()
     # Test si TimeOut
     try:
-        stdout, stderr = process_splits.communicate(timeout=timeout)
+        _, stderr = process_splits.communicate(timeout=timeout)
         if stderr == "":
-            print(stdout)
             process_splits.kill()
             return(f"Connexion machine : {machine} | données {file_to_copy} copiées {colored('OK', 'green')}")
         else:
@@ -137,6 +136,7 @@ def launch_map(machine, filename):
             process_map.kill()
             return(f"Machine : {machine} | MAP {file_to_copy} {colored('OK', 'green')}")
         else:
+            print(stderr)
             process_map.kill()
             return(f"Machine : {machine} | MAP {file_to_copy} {colored('Echec', 'red')}")
     except TimeoutExpired:
@@ -158,7 +158,7 @@ def lauch_shuffle(machine, filename):
     try:
         stdout, stderr = process_shuffle.communicate(timeout=timeout)
         if stderr == "":
-            print(stdout)
+            #print(stdout)
             process_shuffle.kill()
             return(f"Machine : {machine} | SHUFFLE {file_UM} {colored('OK', 'green')}")
         else:
@@ -171,18 +171,17 @@ def lauch_shuffle(machine, filename):
 
 def lauch_reduce(machine):
     direct = '/tmp/sdelarue'
-    timeout = 10000
+    timeout = 10
     # Lancement du Reduce
     connect_cmd = f"ssh -o \'StrictHostKeyChecking=no\' {getName()}{machine}"
     lauch_reduce_cmd = f' python3 {direct}/SLAVE.py 2 None'
     cmd = connect_cmd + lauch_reduce_cmd
     process_reduce = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
-    process_reduce.wait()
+    #process_reduce.wait()
     # Test si TimeOut
     try:
         stdout, stderr = process_reduce.communicate(timeout=timeout)
         if stderr == "":
-            print(stdout)
             # Agrégation des reduces des SLAVES dans un fichier result
             with open(f'{direct}/result/result.txt', 'a') as f_result:
                 f_result.write(f'{stdout}')
@@ -243,7 +242,7 @@ def main(filename):
     input_file = sys.argv[2]
     splits_directory = '/tmp/sdelarue/splits'
     result_directory = '/tmp/sdelarue/result'
-    text_window = 2000000 # nb characters of text windows
+    text_window = 20000000 # nb characters of text windows
     # =========================================================
 
     # Creation des splits de données
@@ -304,8 +303,8 @@ def main(filename):
     create_dir(result_directory)
     start = time.time()
     with Pool() as p:
-        #log_reduce = p.map(lauch_reduce, MACHINES_OK)  
-        log_reduce = p.map(lauch_reduce, list(FILE_DISTRIBUTION.values()))
+        log_reduce = p.map(lauch_reduce, MACHINES_OK)  
+        #log_reduce = p.map(lauch_reduce, list(FILE_DISTRIBUTION.values()))
     end = time.time()
     for elem in log_reduce:
         print(elem)
