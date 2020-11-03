@@ -33,7 +33,7 @@ def ssh(machine):
 
             # Processus de copie de fichier sur la machine distante
             file_to_copy = 'SLAVE.py'
-            sshcopy_file_process = Popen(sshcopy_file_cmd(machine, file_to_copy, direct, direct), stdout=PIPE, stderr=PIPE, shell=True, text=True)
+            sshcopy_file_process = Popen(sshcopy_file_cmd(machine, file_to_copy, 'current', direct), stdout=PIPE, stderr=PIPE, shell=True, text=True)
             sshcopy_file_process.wait()
 
             process.kill()

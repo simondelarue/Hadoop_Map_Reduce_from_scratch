@@ -242,7 +242,7 @@ def main(filename):
     input_file = sys.argv[2]
     splits_directory = '/tmp/sdelarue/splits'
     result_directory = '/tmp/sdelarue/result'
-    text_window = 20000000 # nb characters of text windows
+    text_window = 10000000 # nb characters of text windows
     # =========================================================
 
     # Creation des splits de données
@@ -324,4 +324,4 @@ def main(filename):
         print(f'Temps total : {time_MAP + time_SHUFFLE + time_REDUCE + time_SORT:.5f}')
 
 if __name__ == '__main__':
-  main("/tmp/sdelarue/machines.txt")
+  main("machines.txt")

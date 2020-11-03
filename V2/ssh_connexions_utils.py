@@ -30,7 +30,10 @@ def sshcopy_file_cmd(machine, filename, from_directory, to_directory):
             to_directory : Chemin complet du répertoire dans lequel copier le fichier 'filename'
         output
             String : Commande shell pour la copie d'un fichier sur machine distante via ssh '''
-    return (f'scp {from_directory}/{filename} {getName()}{machine}:{to_directory}/{filename}')
+    if from_directory == 'current':
+        return (f'scp {filename} {getName()}{machine}:{to_directory}/{filename}')
+    else:
+        return (f'scp {from_directory}/{filename} {getName()}{machine}:{to_directory}/{filename}')
 
 
 def list_files_from_dir(direct):
