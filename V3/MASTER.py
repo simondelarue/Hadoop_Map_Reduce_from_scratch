@@ -29,8 +29,8 @@ def sort_results(filename, x=20):
             wc[line.split(' ')[0]] = int(line.split(' ')[1])
     sorted_wc = sorted(wc.items(), key=lambda x: (-x[1], x[0]), reverse=False)
 
-    for elem in sorted_wc[:x]:
-        with open(f'/tmp/sdelarue/result/sorted_result.txt', 'a') as f_res:
+    with open(f'/tmp/sdelarue/result/sorted_result.txt', 'w') as f_res:
+        for elem in sorted_wc[:x]:
             f_res.write(f"{elem[0]} {str(elem[1])}\n")
         f_res.close()
 
