@@ -57,5 +57,5 @@ def map_files_machines(file_list, machine_list):
 
 def print_data_repartition(dict_mapping):
     for split_name, machine in dict_mapping.items():
-        print(f'{split_name}  -> {machine}')
+        print(f'{split_name:<10}  -> {machine}')
 

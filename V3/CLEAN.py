@@ -29,14 +29,14 @@ def clean(machine):
             rmdir_process.wait()
 
             process.kill()
-            return f"Machine : {machine} | CLEANING {colored('OK', 'green')}"
+            return f"Machine : {machine:<11} | CLEANING {colored('OK', 'green')}"
         else: 
             process.kill()
-            return f"Machine : {machine} | CLEANING {colored('Echec', 'red')}"
+            return f"Machine : {machine:<11} | CLEANING {colored('Echec', 'red')}"
 
     except TimeoutExpired:
         process.kill()
-        return f"Machine : {machine} | CLEANING {colored('TimeOut Echec', 'red')}"
+        return f"Machine : {machine:<11} | CLEANING {colored('TimeOut Echec', 'red')}"
 
 
 def ssh_connect_and_rm(machine_list):

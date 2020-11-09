@@ -18,14 +18,18 @@ from ssh_connexions_utils import list_files_from_dir, sshcopy_file_cmd, read_mac
     print_data_repartition, getName
 
 
-def sort_results(filename):
+def sort_results(filename, x=20):
+    ''' Tri le fichier passé en paramètre, par ordre décroissant du nb d'occurences,
+        et par ordre alphabétique des mots si égalité d'occurences.
+        Les x mots les plus fréquents sont enregistrés dans le fichier sorted_result.txt '''
+
     wc = {}
     with open(f'/tmp/sdelarue/result/{filename}') as f:
         for line in f.readlines():
             wc[line.split(' ')[0]] = int(line.split(' ')[1])
     sorted_wc = sorted(wc.items(), key=lambda x: (-x[1], x[0]), reverse=False)
 
-    for elem in sorted_wc:
+    for elem in sorted_wc[:x]:
         with open(f'/tmp/sdelarue/result/sorted_result.txt', 'a') as f_res:
             f_res.write(f"{elem[0]} {str(elem[1])}\n")
         f_res.close()
@@ -88,13 +92,13 @@ def deploy_machines(machine):
         _, stderr = process_machine.communicate(timeout=timeout)
         if stderr == "":
             process_machine.kill()
-            return(f"Machine : {machine} | copie {file_to_copy} {colored('OK', 'green')}")
+            return(f"Machine : {machine:<11} | copie {file_to_copy} {colored('OK', 'green')}")
         else:
             process_machine.kill()
-            return(f"Machine : {machine} | copie {file_to_copy} {colored('Echec', 'red')}")
+            return(f"Machine : {machine:<11} | copie {file_to_copy} {colored('Echec', 'red')}")
     except TimeoutExpired:
         process_machine.kill()
-        return(f"Connexion machine : {machine} | copie {file_to_copy} {colored('TimeOut Echec', 'red')}")    
+        return(f"Connexion machine : {machine:<11} | copie {file_to_copy} {colored('TimeOut Echec', 'red')}")    
 
 
 def deploy_data_splits(machine, filename):
@@ -111,13 +115,13 @@ def deploy_data_splits(machine, filename):
         _, stderr = process_splits.communicate(timeout=timeout)
         if stderr == "":
             process_splits.kill()
-            return(f"Connexion machine : {machine} | données {file_to_copy} copiées {colored('OK', 'green')}")
+            return(f"Connexion machine : {machine:<11} | données {file_to_copy} copiées {colored('OK', 'green')}")
         else:
             process_splits.kill()
-            return(f"Connexion machine : {machine} | données {file_to_copy} non copiées {colored('Echec', 'red')}")
+            return(f"Connexion machine : {machine:<11} | données {file_to_copy} non copiées {colored('Echec', 'red')}")
     except TimeoutExpired:
         process_splits.kill()
-        return(f"Connexion machine : {machine} | données {file_to_copy} non copiées {colored('TimeOut Echec', 'red')}")
+        return(f"Connexion machine : {machine:<11} | données {file_to_copy} non copiées {colored('TimeOut Echec', 'red')}")
 
 
 def launch_map(machine, filename):
@@ -135,14 +139,14 @@ def launch_map(machine, filename):
         _, stderr = process_map.communicate(timeout=timeout)
         if stderr == "":
             process_map.kill()
-            return(f"Machine : {machine} | MAP {file_to_copy} {colored('OK', 'green')}")
+            return(f"Machine : {machine:<11} | MAP {file_to_copy} {colored('OK', 'green')}")
         else:
             print(stderr)
             process_map.kill()
-            return(f"Machine : {machine} | MAP {file_to_copy} {colored('Echec', 'red')}")
+            return(f"Machine : {machine:<11} | MAP {file_to_copy} {colored('Echec', 'red')}")
     except TimeoutExpired:
         process_map.kill()
-        return(f"Machine : {machine} | MAP {file_to_copy} {colored('TimeOut Echec', 'red')}")
+        return(f"Machine : {machine:<11} | MAP {file_to_copy} {colored('TimeOut Echec', 'red')}")
 
 
 def lauch_shuffle(machine, filename):
@@ -161,14 +165,14 @@ def lauch_shuffle(machine, filename):
         if stderr == "":
             #print(stdout)
             process_shuffle.kill()
-            return(f"Machine : {machine} | SHUFFLE {file_UM} {colored('OK', 'green')}")
+            return(f"Machine : {machine:<11} | SHUFFLE {file_UM} {colored('OK', 'green')}")
         else:
             print(stderr)
             process_shuffle.kill()
-            return(f"Machine : {machine} | SHUFFLE {file_UM} {colored('Echec', 'red')}")
+            return(f"Machine : {machine:<11} | SHUFFLE {file_UM} {colored('Echec', 'red')}")
     except TimeoutExpired:
         process_shuffle.kill()
-        return(f"Machine : {machine} | SHUFFLE {file_UM} {colored('TimeOut Echec', 'red')}")
+        return(f"Machine : {machine:<11} | SHUFFLE {file_UM} {colored('TimeOut Echec', 'red')}")
 
 
 def lauch_reduce(machine):
@@ -189,14 +193,14 @@ def lauch_reduce(machine):
                 f_result.write(f'{stdout}')
             f_result.close()
             process_reduce.kill()
-            return(f"Machine : {machine} | REDUCE {colored('OK', 'green')}")
+            return(f"Machine : {machine:<11} | REDUCE {colored('OK', 'green')}")
         else:
             print(stderr)
             process_reduce.kill()
-            return(f"Machine : {machine} | REDUCE {colored('Echec', 'red')}")
+            return(f"Machine : {machine:<11} | REDUCE {colored('Echec', 'red')}")
     except TimeoutExpired:
         process_reduce.kill()
-        return(f"Machine : {machine} | REDUCE {colored('TimeOut Echec', 'red')}")
+        return(f"Machine : {machine:<11} | REDUCE {colored('TimeOut Echec', 'red')}")
 
 
 def lauch_cleaning():
@@ -225,7 +229,7 @@ def network_shuffle(machine):
     send_shuffle_cmd = f' python3 /tmp/sdelarue/SLAVE.py 3 None'
     proc = Popen(connect_cmd + send_shuffle_cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
     try:
-        stdout, stderr = proc.communicate(timeout=timeout)
+        _, stderr = proc.communicate(timeout=timeout)
         if stderr == "":
             #print(stdout)
             proc.kill()
@@ -265,7 +269,7 @@ def main(filename):
     input_file = sys.argv[2]
     splits_directory = f'{working_directory}/splits'
     result_directory = f'{working_directory}/result'
-    text_window = 10000000 # nb characters of text windows
+    text_window = 8000000 # nb characters of text windows
     # =========================================================
 
     create_dir(working_directory)
@@ -348,11 +352,18 @@ def main(filename):
     if (len(sys.argv) > 3 and (sys.argv[3] == '-sort')):
         print('===================================================')
         print(" SORT RESULT (see \'sorted_result.txt\') ")
-        start = time.time()
-        sort_results('result.txt')
-        end = time.time()
-        time_SORT = (end - start)
-        print(f' SORT finished : {time_SORT:.5f} secondes')
+        if (len(sys.argv) > 4):
+            start = time.time()
+            sort_results('result.txt', int(sys.argv[4]))
+            end = time.time()
+            time_SORT = (end - start)
+            print(f' SORT finished : {time_SORT:.5f} secondes')
+        else:
+            start = time.time()
+            sort_results('result.txt')
+            end = time.time()
+            time_SORT = (end - start)
+            print(f' SORT finished : {time_SORT:.5f} secondes')
 
         print(f'Temps total : {time_MAP + time_SHUFFLE + time_REDUCE + time_SORT:.5f}')
     

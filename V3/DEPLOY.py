@@ -37,14 +37,14 @@ def ssh(machine):
             sshcopy_file_process.wait()
 
             process.kill()
-            return f"Machine : {machine}    | Deploiement {colored('OK', 'green')}"
+            return f"Machine : {machine:<11} | Deploiement {colored('OK', 'green')}"
         else: 
             process.kill()
-            return f"Machine : {machine}    | Deploiement {colored('Echec', 'red')}"
+            return f"Machine : {machine:<11} | Deploiement {colored('Echec', 'red')}"
 
     except TimeoutExpired:
         process.kill()
-        return f"Machine : {machine}    | Deploiement {colored('TimeOut Echec', 'red')}"
+        return f"Machine : {machine:<11} | Deploiement {colored('TimeOut Echec', 'red')}"
         
 
 
