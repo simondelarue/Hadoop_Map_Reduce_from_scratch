@@ -1,0 +1,156 @@
+===================================================
+ CLEANING machines
+Machine : tp-1a207-15 | CLEANING [32mOK[0m
+Machine : tp-1a207-18 | CLEANING [32mOK[0m
+Machine : fausse-mach | CLEANING [31mEchec[0m
+Machine : tp-1a201-33 | CLEANING [32mOK[0m
+Machine : tp-5d02-11 | CLEANING [32mOK[0m
+Machine : tp-5d02-12 | CLEANING [32mOK[0m
+Machine : tp-5d02-13 | CLEANING [32mOK[0m
+Machine : tp-5d02-14 | CLEANING [32mOK[0m
+Machine : tp-5d02-15 | CLEANING [32mOK[0m
+Machine : tp-5d02-16 | CLEANING [32mOK[0m
+Machine : tp-5d02-17 | CLEANING [32mOK[0m
+Machine : tp-5d02-18 | CLEANING [32mOK[0m
+Machine : tp-5d02-19 | CLEANING [32mOK[0m
+Machine : tp-5d02-20 | CLEANING [32mOK[0m
+---------------------------------------------------
+Connexions réussies : 13
+Connexions en échec : 1
+
+===================================================
+Deploiement du SLAVE.py sur les machines ...
+Machine : tp-1a207-15    | Deploiement [32mOK[0m
+Machine : tp-1a207-18    | Deploiement [32mOK[0m
+Machine : fausse-mach    | Deploiement [31mEchec[0m
+Machine : tp-1a201-33    | Deploiement [32mOK[0m
+Machine : tp-5d02-11    | Deploiement [32mOK[0m
+Machine : tp-5d02-12    | Deploiement [32mOK[0m
+Machine : tp-5d02-13    | Deploiement [32mOK[0m
+Machine : tp-5d02-14    | Deploiement [32mOK[0m
+Machine : tp-5d02-15    | Deploiement [32mOK[0m
+Machine : tp-5d02-16    | Deploiement [32mOK[0m
+Machine : tp-5d02-17    | Deploiement [32mOK[0m
+Machine : tp-5d02-18    | Deploiement [32mOK[0m
+Machine : tp-5d02-19    | Deploiement [32mOK[0m
+Machine : tp-5d02-20    | Deploiement [32mOK[0m
+---------------------------------------------------
+Connexions réussies : 13
+Connexions en échec : 1
+===================================================
+ SPLITS | Partition des données sante_publique.txt
+S12.txt  -> tp-1a207-15
+S7.txt  -> tp-1a207-18
+S6.txt  -> tp-1a201-33
+S13.txt  -> tp-5d02-11
+S11.txt  -> tp-5d02-12
+S4.txt  -> tp-5d02-13
+S5.txt  -> tp-5d02-14
+S10.txt  -> tp-5d02-15
+S14.txt  -> tp-5d02-16
+S1.txt  -> tp-5d02-17
+S0.txt  -> tp-5d02-18
+S15.txt  -> tp-5d02-19
+S17.txt  -> tp-5d02-20
+S2.txt  -> tp-1a207-15
+S3.txt  -> tp-1a207-18
+S16.txt  -> tp-1a201-33
+S8.txt  -> tp-5d02-11
+S9.txt  -> tp-5d02-12
+---------------------------------------------------
+ SPLITS | Deploiement
+Connexion machine : tp-1a207-15 | données S12.txt copiées [32mOK[0m
+Connexion machine : tp-1a207-18 | données S7.txt copiées [32mOK[0m
+Connexion machine : tp-1a201-33 | données S6.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-11 | données S13.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-12 | données S11.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-13 | données S4.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-14 | données S5.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-15 | données S10.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-16 | données S14.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-17 | données S1.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-18 | données S0.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-19 | données S15.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-20 | données S17.txt copiées [32mOK[0m
+Connexion machine : tp-1a207-15 | données S2.txt copiées [32mOK[0m
+Connexion machine : tp-1a207-18 | données S3.txt copiées [32mOK[0m
+Connexion machine : tp-1a201-33 | données S16.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-11 | données S8.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-12 | données S9.txt copiées [32mOK[0m
+---------------------------------------------------
+ Copie de la liste des machines sur les workers
+Machine : tp-5d02-20 | copie available_machines.txt [32mOK[0m
+Machine : tp-1a201-33 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-19 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-17 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-15 | copie available_machines.txt [32mOK[0m
+Machine : tp-1a207-15 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-13 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-14 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-12 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-18 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-16 | copie available_machines.txt [32mOK[0m
+Machine : tp-1a207-18 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-11 | copie available_machines.txt [32mOK[0m
+===================================================
+ MAP 
+Machine : tp-1a207-15 | MAP S12.txt [32mOK[0m
+Machine : tp-1a207-18 | MAP S7.txt [32mOK[0m
+Machine : tp-1a201-33 | MAP S6.txt [32mOK[0m
+Machine : tp-5d02-11 | MAP S13.txt [32mOK[0m
+Machine : tp-5d02-12 | MAP S11.txt [32mOK[0m
+Machine : tp-5d02-13 | MAP S4.txt [32mOK[0m
+Machine : tp-5d02-14 | MAP S5.txt [32mOK[0m
+Machine : tp-5d02-15 | MAP S10.txt [32mOK[0m
+Machine : tp-5d02-16 | MAP S14.txt [32mOK[0m
+Machine : tp-5d02-17 | MAP S1.txt [32mOK[0m
+Machine : tp-5d02-18 | MAP S0.txt [32mOK[0m
+Machine : tp-5d02-19 | MAP S15.txt [32mOK[0m
+Machine : tp-5d02-20 | MAP S17.txt [32mOK[0m
+Machine : tp-1a207-15 | MAP S2.txt [32mOK[0m
+Machine : tp-1a207-18 | MAP S3.txt [32mOK[0m
+Machine : tp-1a201-33 | MAP S16.txt [32mOK[0m
+Machine : tp-5d02-11 | MAP S8.txt [32mOK[0m
+Machine : tp-5d02-12 | MAP S9.txt [32mOK[0m
+ MAP finished : 4.31607 secondes
+===================================================
+ SHUFFLE 
+Machine : tp-1a207-15 | SHUFFLE UM12.txt [32mOK[0m
+Machine : tp-1a207-18 | SHUFFLE UM7.txt [32mOK[0m
+Machine : tp-1a201-33 | SHUFFLE UM6.txt [32mOK[0m
+Machine : tp-5d02-11 | SHUFFLE UM13.txt [32mOK[0m
+Machine : tp-5d02-12 | SHUFFLE UM11.txt [32mOK[0m
+Machine : tp-5d02-13 | SHUFFLE UM4.txt [32mOK[0m
+Machine : tp-5d02-14 | SHUFFLE UM5.txt [32mOK[0m
+Machine : tp-5d02-15 | SHUFFLE UM10.txt [32mOK[0m
+Machine : tp-5d02-16 | SHUFFLE UM14.txt [32mOK[0m
+Machine : tp-5d02-17 | SHUFFLE UM1.txt [32mOK[0m
+Machine : tp-5d02-18 | SHUFFLE UM0.txt [32mOK[0m
+Machine : tp-5d02-19 | SHUFFLE UM15.txt [32mOK[0m
+Machine : tp-5d02-20 | SHUFFLE UM17.txt [32mOK[0m
+Machine : tp-1a207-15 | SHUFFLE UM2.txt [32mOK[0m
+Machine : tp-1a207-18 | SHUFFLE UM3.txt [32mOK[0m
+Machine : tp-1a201-33 | SHUFFLE UM16.txt [32mOK[0m
+Machine : tp-5d02-11 | SHUFFLE UM8.txt [32mOK[0m
+Machine : tp-5d02-12 | SHUFFLE UM9.txt [32mOK[0m
+ SHUFFLE finished : 48.14122 secondes
+===================================================
+ REDUCE 
+Machine : tp-1a207-15 | REDUCE [32mOK[0m
+Machine : tp-1a207-18 | REDUCE [32mOK[0m
+Machine : tp-1a201-33 | REDUCE [32mOK[0m
+Machine : tp-5d02-11 | REDUCE [32mOK[0m
+Machine : tp-5d02-12 | REDUCE [32mOK[0m
+Machine : tp-5d02-13 | REDUCE [32mOK[0m
+Machine : tp-5d02-14 | REDUCE [32mOK[0m
+Machine : tp-5d02-15 | REDUCE [32mOK[0m
+Machine : tp-5d02-16 | REDUCE [32mOK[0m
+Machine : tp-5d02-17 | REDUCE [32mOK[0m
+Machine : tp-5d02-18 | REDUCE [32mOK[0m
+Machine : tp-5d02-19 | REDUCE [32mOK[0m
+Machine : tp-5d02-20 | REDUCE [32mOK[0m
+ REDUCE finished : 3.79737 secondes
+===================================================
+ SORT RESULT (see 'sorted_result.txt') 
+ SORT finished : 8.26620 secondes
+Temps total : 64.52086

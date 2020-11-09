@@ -1,0 +1,76 @@
+===================================================
+ CLEANING machines
+Machine : tp-1a207-15 | CLEANING [32mOK[0m
+Machine : tp-1a207-18 | CLEANING [32mOK[0m
+Machine : fausse-mach | CLEANING [31mEchec[0m
+Machine : tp-1a201-33 | CLEANING [32mOK[0m
+Machine : tp-5d02-11 | CLEANING [32mOK[0m
+---------------------------------------------------
+Connexions réussies : 4
+Connexions en échec : 1
+
+===================================================
+Deploiement du SLAVE.py sur les machines ...
+Machine : tp-1a207-15    | Deploiement [32mOK[0m
+Machine : tp-1a207-18    | Deploiement [32mOK[0m
+Machine : fausse-mach    | Deploiement [31mEchec[0m
+Machine : tp-1a201-33    | Deploiement [32mOK[0m
+Machine : tp-5d02-11    | Deploiement [32mOK[0m
+---------------------------------------------------
+Connexions réussies : 4
+Connexions en échec : 1
+===================================================
+ SPLITS | Partition des données domaine_public_fluvial.txt
+S6.txt  -> tp-1a207-15
+S4.txt  -> tp-1a207-18
+S5.txt  -> tp-1a201-33
+S1.txt  -> tp-5d02-11
+S0.txt  -> tp-1a207-15
+S2.txt  -> tp-1a207-18
+S3.txt  -> tp-1a201-33
+---------------------------------------------------
+ SPLITS | Deploiement
+Connexion machine : tp-1a207-15 | données S6.txt copiées [32mOK[0m
+Connexion machine : tp-1a207-18 | données S4.txt copiées [32mOK[0m
+Connexion machine : tp-1a201-33 | données S5.txt copiées [32mOK[0m
+Connexion machine : tp-5d02-11 | données S1.txt copiées [32mOK[0m
+Connexion machine : tp-1a207-15 | données S0.txt copiées [32mOK[0m
+Connexion machine : tp-1a207-18 | données S2.txt copiées [32mOK[0m
+Connexion machine : tp-1a201-33 | données S3.txt copiées [32mOK[0m
+---------------------------------------------------
+ Copie de la liste des machines sur les workers
+Machine : tp-1a207-15 | copie available_machines.txt [32mOK[0m
+Machine : tp-5d02-11 | copie available_machines.txt [32mOK[0m
+Machine : tp-1a207-18 | copie available_machines.txt [32mOK[0m
+Machine : tp-1a201-33 | copie available_machines.txt [32mOK[0m
+===================================================
+ MAP 
+Machine : tp-1a207-15 | MAP S6.txt [32mOK[0m
+Machine : tp-1a207-18 | MAP S4.txt [32mOK[0m
+Machine : tp-1a201-33 | MAP S5.txt [32mOK[0m
+Machine : tp-5d02-11 | MAP S1.txt [32mOK[0m
+Machine : tp-1a207-15 | MAP S0.txt [32mOK[0m
+Machine : tp-1a207-18 | MAP S2.txt [32mOK[0m
+Machine : tp-1a201-33 | MAP S3.txt [32mOK[0m
+ MAP finished : 1.64744 secondes
+===================================================
+ SHUFFLE 
+Machine : tp-1a207-15 | SHUFFLE UM6.txt [32mOK[0m
+Machine : tp-1a207-18 | SHUFFLE UM4.txt [32mOK[0m
+Machine : tp-1a201-33 | SHUFFLE UM5.txt [32mOK[0m
+Machine : tp-5d02-11 | SHUFFLE UM1.txt [32mOK[0m
+Machine : tp-1a207-15 | SHUFFLE UM0.txt [32mOK[0m
+Machine : tp-1a207-18 | SHUFFLE UM2.txt [32mOK[0m
+Machine : tp-1a201-33 | SHUFFLE UM3.txt [32mOK[0m
+ SHUFFLE finished : 2.67393 secondes
+===================================================
+ REDUCE 
+Machine : tp-1a207-15 | REDUCE [32mOK[0m
+Machine : tp-1a207-18 | REDUCE [32mOK[0m
+Machine : tp-1a201-33 | REDUCE [32mOK[0m
+Machine : tp-5d02-11 | REDUCE [32mOK[0m
+ REDUCE finished : 0.62469 secondes
+===================================================
+ SORT RESULT (see 'sorted_result.txt') 
+ SORT finished : 0.22892 secondes
+Temps total : 5.17499

@@ -1,0 +1,49 @@
+===================================================
+ CLEANING machines
+Machine : tp-1a207-15 | CLEANING [32mOK[0m
+Machine : tp-1a207-18 | CLEANING [32mOK[0m
+Machine : fausse-mach | CLEANING [31mEchec[0m
+Machine : tp-1a201-33 | CLEANING [32mOK[0m
+Machine : tp-5d02-11 | CLEANING [32mOK[0m
+---------------------------------------------------
+Connexions réussies : 4
+Connexions en échec : 1
+
+===================================================
+Deploiement du SLAVE.py sur les machines ...
+Machine : tp-1a207-15    | Deploiement [32mOK[0m
+Machine : tp-1a207-18    | Deploiement [32mOK[0m
+Machine : fausse-mach    | Deploiement [31mEchec[0m
+Machine : tp-1a201-33    | Deploiement [32mOK[0m
+Machine : tp-5d02-11    | Deploiement [32mOK[0m
+---------------------------------------------------
+Connexions réussies : 4
+Connexions en échec : 1
+===================================================
+ SPLITS | Partition des données input.txt
+S0.txt  -> tp-1a207-15
+---------------------------------------------------
+ SPLITS | Deploiement
+Connexion machine : tp-1a207-15 | données S0.txt copiées [32mOK[0m
+---------------------------------------------------
+ Copie de la liste des machines sur les workers
+Machine : tp-1a207-15 | copie available_machines.txt [32mOK[0m
+===================================================
+ MAP 
+Machine : tp-1a207-15 | MAP S0.txt [32mOK[0m
+ MAP finished : 0.63504 secondes
+===================================================
+ SHUFFLE 
+Machine : tp-1a207-15 | SHUFFLE UM0.txt [32mOK[0m
+ SHUFFLE finished : 1.15561 secondes
+===================================================
+ REDUCE 
+Machine : tp-1a207-15 | REDUCE [32mOK[0m
+Machine : tp-1a207-18 | REDUCE [32mOK[0m
+Machine : tp-1a201-33 | REDUCE [32mOK[0m
+Machine : tp-5d02-11 | REDUCE [32mOK[0m
+ REDUCE finished : 0.63256 secondes
+===================================================
+ SORT RESULT (see 'sorted_result.txt') 
+ SORT finished : 0.00366 secondes
+Temps total : 2.42688
