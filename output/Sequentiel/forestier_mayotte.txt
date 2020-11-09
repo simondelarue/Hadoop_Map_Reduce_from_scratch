@@ -1,0 +1,22 @@
+--- 0.0006999969482421875 seconds for opening file and counting words ---
+--- 5.2928924560546875e-05 seconds for sorting values ---
+de 12
+biens 8
+ou 8
+forestier 6
+des 5
+: 4
+Code 4
+Dispositions 4
+Mayotte 4
+aux 4
+communes 4
+forestiers 4
+gestion 4
+les 4
+tous 4
+à 4
+Partie 3
+législative 3
+Article 2
+II 2

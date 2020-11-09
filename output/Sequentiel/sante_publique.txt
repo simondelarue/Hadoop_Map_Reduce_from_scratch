@@ -1,0 +1,22 @@
+--- 1.5221672058105469 seconds for opening file and counting words ---
+--- 0.1399822235107422 seconds for sorting values ---
+de 189699
+la 74433
+des 66705
+à 65462
+et 60940
+les 48772
+du 48400
+le 44264
+ou 39464
+par 30224
+en 28922
+au 25026
+l'article 22772
+dans 22570
+Article 21878
+↬ 21810
+est 21258
+; 19388
+L. 18410
+un 17594

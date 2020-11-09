@@ -1,0 +1,6 @@
+--- 0.0002079010009765625 seconds for opening file and counting words ---
+--- 1.52587890625e-05 seconds for sorting values ---
+Car 3
+Beer 2
+Deer 2
+River 2

@@ -1,0 +1,22 @@
+--- 42.693662881851196 seconds for opening file and counting words ---
+--- 16.80185604095459 seconds for sorting values ---
+the 578580
+to 434203
+and 432210
+- 382045
+of 376385
+a 374874
+in 285432
+de 268255
+► 229494
+& 228286
+(1) 192668
+for 190229
+| 167961
+is 161498
+on 146392
+The 129428
+I 115746
+with 113325
+by 109624
+you 104369
