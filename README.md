@@ -22,4 +22,6 @@ usage :
 
 ## Synthèse des résultats
 
+Les temps de calculs pour la version répartie ne prennent pas en compte les étapes de cleaning des machines, ni de déploiement des données.   
+
 ![Results](output/results.png)
