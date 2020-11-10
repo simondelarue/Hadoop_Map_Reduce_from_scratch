@@ -14,7 +14,7 @@ usage: ./wordcount.py {--count | --sort_values | --sort_values_keys} filename
 
 ## Hadoop MapReduce simpliste (calcul parallèle)
 
-Copier une version (V1, V2, V3) du projet dans votre répertoire, ainsi que le répertoire d'input.  
+Copier une version (V1, V2, V3) du projet dans votre répertoire, ainsi que le répertoire d'input.    
 
 usage :   
 * changer le nom d'utilisateur retourné dans la fonction _getname()_ du fichier ssh_connexions_utils.py
