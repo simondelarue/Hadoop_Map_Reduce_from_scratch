@@ -76,7 +76,6 @@ def mapper(filename):
         for line in f1.readlines():
             for word in line.split():
                 f2.write(f'{word} ')
-                #f2.write(word + ' ' + str(1) + '\n')
         f2.close()
 
 
@@ -96,7 +95,6 @@ def reducer():
                 readed_shuffle = f.read()
             for word in readed_shuffle.split(' '):
                 WC_DICT[word] = WC_DICT.get(word, 0) + 1
-            #WC_DICT = WC_DICT.update(collections.Counter(readed_shuffle.split(' ')))
 
         # Ecrit l'agrégation des résultats dans un fichier reduce
         for key, value in WC_DICT.items():
