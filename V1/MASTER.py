@@ -128,7 +128,7 @@ def launch_map(machine, filename):
     timeout = 10000
     # Lancement du Map
     connect_cmd = f"ssh -o \'StrictHostKeyChecking=no\' {getName()}{machine}"
-    lauch_map_cmd = f' python3 {direct}/SLAVE.py 0 {direct}/splits/{filename}'# + direct + '/SLAVE.py' + ' 0 '  + direct + '/splits/' + filename
+    lauch_map_cmd = f' python3 {direct}/SLAVE.py 0 {direct}/splits/{filename}'
     cmd = connect_cmd + lauch_map_cmd
     process_map = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
     process_map.wait()
@@ -152,7 +152,7 @@ def lauch_shuffle(machine, filename):
     timeout = 10000
     # Lancement du Shuffle
     connect_cmd = f"ssh -o \'StrictHostKeyChecking=no\' {getName()}{machine}"
-    lauch_shuffle_cmd = f' python3 {direct}/SLAVE.py 1 {direct}/maps/{file_UM}' # + direct + '/SLAVE.py' + ' 1 '  + direct + '/maps/' + file_UM
+    lauch_shuffle_cmd = f' python3 {direct}/SLAVE.py 1 {direct}/maps/{file_UM}'
     cmd = connect_cmd + lauch_shuffle_cmd
     process_shuffle = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
     process_shuffle.wait()

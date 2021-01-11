@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import time
 
@@ -7,7 +9,6 @@ def wc(filename):
     with open(filename, encoding='utf8') as f:
         for line in f.readlines():
             for word in line.split():
-                # word = word.lower()
                 wc_dict[word] = wc_dict.get(word, 0) + 1
     return wc_dict
 
@@ -35,7 +36,7 @@ def print_dict(dict):
 
 def main():
     if len(sys.argv) != 3:
-        print('usage: ./wordcount.py {--count | --sort_values | --sort_values_keys} file')
+        print('usage: ./WordCountSeq.py {--sort_values | --sort_values_keys} file')
         sys.exit(1)
 
     option = sys.argv[1]

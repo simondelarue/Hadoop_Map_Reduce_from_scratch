@@ -75,18 +75,3 @@ def deploy(machine_list):
             f1.write(machine + '\n')
     
     return available_machines
-
-
-'''
-Etape 7 : Un programme DEPLOY : Test de connection SSH multiple
-def ssh(machine):
-    cmd = 'ssh ' + machine + ' hostname'
-    timeout = 8
-    process = Popen(cmd, shell=True, stdout=PIPE, stderr=STDOUT)
-    try:
-        stdout, stderr = process.communicate(timeout=timeout)
-        print(str(stdout).strip() + ' : connexion OK')
-    except TimeoutExpired:
-        process.kill()
-        raise TimeoutExpired(process.args, timeout)
-'''

@@ -7,9 +7,6 @@ import os
 import hashlib
 
 
-'''def hash_function(word):
-    alphabet = string.ascii_lowercase + string.ascii_uppercase
-    return int(''.join([str(alphabet.index(letter)) for letter in word]))'''
 def hash_function(word):
     return int(hashlib.sha256(word.encode('utf-8')).hexdigest(), 16) % 10**8
 
@@ -46,8 +43,6 @@ def shuffle(filename, machines):
             process_shuffle = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
             process_shuffle.wait()
             process_shuffle.kill()
-
-            #print(hostname  + ' : ' + str(hash_value) + '-' + socket.gethostname() + '.txt')
 
 
 def mapper(filename):
