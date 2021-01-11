@@ -125,7 +125,7 @@ def launch_map(machine, filename):
     timeout = 10000
     # Lancement du Map
     connect_cmd = f"ssh -o \'StrictHostKeyChecking=no\' {getName()}{machine}"
-    lauch_map_cmd = f' python3 {direct}/SLAVE.py 0 {direct}/splits/{filename}'# + direct + '/SLAVE.py' + ' 0 '  + direct + '/splits/' + filename
+    lauch_map_cmd = f' python3 {direct}/SLAVE.py 0 {direct}/splits/{filename}'
     cmd = connect_cmd + lauch_map_cmd
     process_map = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
     process_map.wait()
@@ -177,7 +177,6 @@ def lauch_reduce(machine):
     lauch_reduce_cmd = f' python3 {direct}/SLAVE.py 2 None'
     cmd = connect_cmd + lauch_reduce_cmd
     process_reduce = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE, text=True)
-    #process_reduce.wait()
     # Test si TimeOut
     try:
         stdout, stderr = process_reduce.communicate(timeout=timeout)
@@ -304,7 +303,6 @@ def main(filename):
     start = time.time()
     with Pool() as p:
         log_reduce = p.map(lauch_reduce, MACHINES_OK)  
-        #log_reduce = p.map(lauch_reduce, list(FILE_DISTRIBUTION.values()))
     end = time.time()
     for elem in log_reduce:
         print(elem)
