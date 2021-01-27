@@ -137,11 +137,9 @@ __Détails d'implémentation__
 - Architecture de calcul distribué 
 - Optimisation des fichiers `UM.txt`
 <img src="img/um_txt.png" width="400" height="100">
-- __parallélisation__ de 
-
-    * l'étape de __hashage__ de chaque mot, afin de lui affecter sa machine destinatrice 
-    * l'écriture des mots dans chaque fichiers shuffle   
-  
+- **parallélisation** de  
+    - l'étape de hashage de chauqe mot, afin de lui affecter sa machine destinatrice
+    - l'écriture des mots dans chaque fichier `shuffle`  
   
 __Résultats__
 
