@@ -135,13 +135,11 @@ __Usage__
 __Détails d'implémentation__
 
 - Architecture de calcul distribué 
+- **parallélisation** de    
+    - l'étape de **hashage** de chaque mot, afin de lui affecter sa machine destinatrice  
+    - l'écriture des mots dans chaque fichier `shuffle`  
 - Optimisation des fichiers `UM.txt`
 <img src="img/um_txt.png" width="400" height="100">
-- parallélisation de    
-
-    - l'étape de hashage de chauqe mot, afin de lui affecter sa machine destinatrice  
-    - l'écriture des mots dans chaque fichier `shuffle`  
-    
     
 __Résultats__
 
