@@ -18,10 +18,10 @@ Pour mesurer les bénéfices d'un tel type de modèle, nous chronométrerons une
 
 Les architectures implémentées et évaluées sont les suivantes :
 1. [Version séquentielle](#Version_séquentielle)
-2. [Calculs distribués](#distributed)
-    a. [Calculs distribués V1 (naïve)](#V1)
-    b. [Calculs distribués V2 (semi-parallélisation)](#V2)
-    c. [Calculs distribués V3 (parallélisation)](#V3)
+2. [Calculs distribués](#distributed)  
+    a. [Calculs distribués V1 (naïve)](#V1)     
+    b. [Calculs distribués V2 (semi-parallélisation)](#V2)  
+    c. [Calculs distribués V3 (parallélisation)](#V3)  
 
 
 ## Version séquentielle <a id="Version_séquentielle"></a>
