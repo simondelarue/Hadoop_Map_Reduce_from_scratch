@@ -138,8 +138,8 @@ __Détails d'implémentation__
 - Optimisation des fichiers `UM.txt`
 <img src="img/um_txt.png" width="400" height="100">
 - __parallélisation__ de   
-    * l'étape de __hashage__ de chaque mot, afin de lui affecter sa machine destinatrice  
-    * l'écriture des mots dans chaque fichiers _shuffle_  
+    - l'étape de __hashage__ de chaque mot, afin de lui affecter sa machine destinatrice  
+    - l'écriture des mots dans chaque fichiers shuffle   
   
   
 __Résultats__
